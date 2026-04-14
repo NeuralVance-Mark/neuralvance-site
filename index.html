@@ -1140,15 +1140,15 @@ footer {
 <!-- ══════════════════════════════════════════════════ -->
 <div id="credentials">
   <div class="cred-inner">
-    <span class="cred-label">Select Engagements</span>
+    <span class="cred-label">Experience Across</span>
     <div class="cred-items">
-      <span class="cred-item">Alyeska Pipeline · TAPS</span>
-      <span class="cred-item">DTCC</span>
-      <span class="cred-item">Best Buy</span>
-      <span class="cred-item">Kimberly-Clark</span>
-      <span class="cred-item">Minnesota Senate</span>
-      <span class="cred-item">University of Alaska System</span>
-      <span class="cred-item">Hamline University</span>
+      <span class="cred-item">U.S. Critical Energy Infrastructure</span>
+      <span class="cred-item">Global Financial Markets Clearinghouse</span>
+      <span class="cred-item">Fortune 100 Retail</span>
+      <span class="cred-item">Fortune 100 Consumer Goods</span>
+      <span class="cred-item">State Legislature</span>
+      <span class="cred-item">State University System</span>
+      <span class="cred-item">Private University</span>
     </div>
   </div>
 </div>
@@ -1172,7 +1172,7 @@ footer {
         The executive who's<br><em>sat in the chair.</em>
       </h2>
       <p class="about-body reveal reveal-delay-2">
-        I've spent 30 years making high-stakes technology decisions — not advising on them from a distance. As CIO of Alyeska Pipeline, I was responsible for the technology systems underlying <strong>800 miles of U.S. critical energy infrastructure</strong>. Technology failure there wasn't an inconvenience. It was a national security event.
+        I've spent 30 years making high-stakes technology decisions — not advising on them from a distance. Most recently as CIO of a major U.S. energy pipeline, I was responsible for the technology systems underlying <strong>800 miles of critical national infrastructure</strong>. Technology failure there wasn't an inconvenience. It was a national security event.
       </p>
       <p class="about-body reveal reveal-delay-3">
         That context shapes how I think about AI governance, cybersecurity risk, and enterprise modernization. Boards and CEOs don't need another consultant with a deck. They need someone who has made the hard calls — and can bring that judgment to their most consequential technology decisions.
@@ -1600,12 +1600,40 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(el => observer.observe(el));
 
 // Form submit
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
   const btn = e.target;
-  btn.textContent = 'Message Sent ✓';
-  btn.style.background = 'var(--teal)';
+  const form = document.getElementById('contact-form');
+  const data = new FormData();
+  
+  // Collect all form values
+  const inputs = form.querySelectorAll('input, select, textarea');
+  inputs.forEach(input => {
+    if (input.value) data.append(input.placeholder || input.name || 'field', input.value);
+  });
+
+  btn.textContent = 'Sending...';
   btn.disabled = true;
+
+  try {
+    const response = await fetch('https://formspree.io/f/mjgjkebn', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = 'var(--teal)';
+    } else {
+      btn.textContent = 'Error — please email mark@neuralvance.com';
+      btn.style.background = '#dc2626';
+      btn.disabled = false;
+    }
+  } catch (err) {
+    btn.textContent = 'Error — please email mark@neuralvance.com';
+    btn.style.background = '#dc2626';
+    btn.disabled = false;
+  }
 }
 
 // Smooth scroll for all anchor links

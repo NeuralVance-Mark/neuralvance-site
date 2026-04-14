@@ -1465,31 +1465,31 @@ footer {
       </div>
     </div>
 
-    <div id="contact-form" class="contact-form reveal reveal-delay-3">
+    <form id="contact-form" class="contact-form reveal reveal-delay-3" action="https://formspree.io/f/mjgjkebn" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">First Name</label>
-          <input class="form-input" type="text" placeholder="Jane">
+          <input class="form-input" type="text" name="first_name" placeholder="Jane">
         </div>
         <div class="form-group">
           <label class="form-label">Last Name</label>
-          <input class="form-input" type="text" placeholder="Smith">
+          <input class="form-input" type="text" name="last_name" placeholder="Smith">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Email</label>
-          <input class="form-input" type="email" placeholder="jane@company.com">
+          <input class="form-input" type="email" name="email" placeholder="jane@company.com" required>
         </div>
         <div class="form-group">
           <label class="form-label">Organization</label>
-          <input class="form-input" type="text" placeholder="Acme Corp">
+          <input class="form-input" type="text" name="organization" placeholder="Acme Corp">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Your Role</label>
-          <select class="form-select">
+          <select class="form-select" name="role">
             <option value="">Select your role...</option>
             <option>CEO / President</option>
             <option>Board Member / Chair</option>
@@ -1503,7 +1503,7 @@ footer {
         </div>
         <div class="form-group">
           <label class="form-label">Organization Size</label>
-          <select class="form-select">
+          <select class="form-select" name="org_size">
             <option value="">Annual revenue...</option>
             <option>Under $25M</option>
             <option>$25M – $100M</option>
@@ -1516,7 +1516,7 @@ footer {
       <div class="form-row">
         <div class="form-group full">
           <label class="form-label">Primary Challenge</label>
-          <select class="form-select">
+          <select class="form-select" name="challenge">
             <option value="">Select the primary challenge...</option>
             <option>AI governance & responsible adoption</option>
             <option>Cybersecurity & enterprise risk</option>
@@ -1530,7 +1530,7 @@ footer {
       <div class="form-row">
         <div class="form-group full">
           <label class="form-label">How did you find NeuralVance?</label>
-          <select class="form-select">
+          <select class="form-select" name="how_found">
             <option value="">Select one...</option>
             <option>LinkedIn</option>
             <option>Referral / Word of mouth</option>
@@ -1544,11 +1544,13 @@ footer {
       <div class="form-row">
         <div class="form-group full">
           <label class="form-label">Tell me more</label>
-          <textarea class="form-textarea" placeholder="Briefly describe your organization and the situation you're navigating..."></textarea>
+          <textarea class="form-textarea" name="message" placeholder="Briefly describe your organization and the situation you're navigating..."></textarea>
         </div>
       </div>
-      <button class="form-submit" onclick="handleSubmit(event)">Send Message →</button>
-    </div>
+      <input type="hidden" name="_subject" value="New NeuralVance Contact Form Submission">
+      <input type="hidden" name="_next" value="https://www.neuralvance.com#contact">
+      <button type="submit" class="form-submit">Send Message →</button>
+    </form>
 
   </div>
 </section>

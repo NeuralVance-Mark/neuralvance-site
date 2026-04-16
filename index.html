@@ -1575,7 +1575,7 @@ footer {
     <div style="text-align:right;">
       <p class="footer-copy">© 2026 NeuralVance LLC</p>
       <p class="footer-copy" style="margin-top:4px;">Minnesota-Based. Nationally Engaged.</p>
-      <p style="font-size:9px;color:rgba(255,255,255,0.15);margin-top:8px;letter-spacing:1px;">v8</p>
+      <p style="font-size:9px;color:rgba(255,255,255,0.15);margin-top:8px;letter-spacing:1px;">v9</p>
     </div>
   </div>
 </footer>
@@ -1603,31 +1603,45 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(el => observer.observe(el));
 
 // Form submit
-function sendMailto() {
+async function sendMailto() {
   const form = document.getElementById('contact-form');
-  const firstName = form.querySelector('[name="first_name"]').value || '';
-  const lastName  = form.querySelector('[name="last_name"]').value || '';
-  const org       = form.querySelector('[name="organization"]').value || '';
-  const role      = form.querySelector('[name="role"]').value || '';
-  const size      = form.querySelector('[name="org_size"]').value || '';
-  const challenge = form.querySelector('[name="challenge"]').value || '';
-  const howFound  = form.querySelector('[name="how_found"]').value || '';
-  const message   = form.querySelector('[name="message"]').value || '';
-  const email     = form.querySelector('[name="email"]').value || '';
+  const btn  = form.querySelector('.form-submit');
 
-  const subject = encodeURIComponent('NeuralVance Inquiry — ' + firstName + ' ' + lastName + ' | ' + org);
-  const body = encodeURIComponent(
-    'Name: ' + firstName + ' ' + lastName + '\n' +
-    'Email: ' + email + '\n' +
-    'Organization: ' + org + '\n' +
-    'Role: ' + role + '\n' +
-    'Organization Size: ' + size + '\n' +
-    'Primary Challenge: ' + challenge + '\n' +
-    'How Found NeuralVance: ' + howFound + '\n\n' +
-    'Message:\n' + message
-  );
+  const payload = {
+    first_name:   form.querySelector('[name="first_name"]').value   || '',
+    last_name:    form.querySelector('[name="last_name"]').value    || '',
+    email:        form.querySelector('[name="email"]').value        || '',
+    organization: form.querySelector('[name="organization"]').value || '',
+    role:         form.querySelector('[name="role"]').value         || '',
+    org_size:     form.querySelector('[name="org_size"]').value     || '',
+    challenge:    form.querySelector('[name="challenge"]').value    || '',
+    how_found:    form.querySelector('[name="how_found"]').value    || '',
+    message:      form.querySelector('[name="message"]').value      || ''
+  };
 
-  window.location.href = 'mailto:mark@neuralvance.com?subject=' + subject + '&body=' + body;
+  if (!payload.email) {
+    alert('Please enter your email address.');
+    return;
+  }
+
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    await fetch('https://default0fbbf38fa0a24e1198c31f89b24da3.8a.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/38df550b971c46f4951c2ac7de770b75/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=grKYlF28SFvZQyFQ2iTKtXMXk_xljoYiNLXC7ysqJts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    // Show success message in place
+    form.innerHTML = '<div style="padding:40px 0;text-align:center;"><p style="font-family:\'DM Sans\',sans-serif;font-size:18px;color:var(--teal);font-weight:600;margin-bottom:12px;">Message received.</p><p style="font-family:\'DM Sans\',sans-serif;font-size:15px;color:var(--slate);">Thank you for reaching out. I\'ll be in touch shortly.</p></div>';
+
+  } catch (err) {
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again or email mark@neuralvance.com directly.');
+  }
 }
 
 // Smooth scroll for all anchor links

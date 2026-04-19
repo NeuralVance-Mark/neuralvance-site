@@ -952,6 +952,111 @@ nav.scrolled {
 }
 .form-submit:hover { background: var(--forest-mid); }
 
+/* ─── MANIFESTO ─────────────────────────────────────── */
+#manifesto {
+  background: var(--ink);
+  padding: 100px 40px;
+}
+.manifesto-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.manifesto-inner .section-eyebrow {
+  color: var(--teal);
+}
+.manifesto-intro {
+  margin: 24px 0 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 30px);
+  color: #f0ede8;
+  line-height: 1.4;
+}
+.manifesto-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: rgba(240,237,232,0.65);
+  line-height: 1.7;
+  margin-bottom: 56px;
+  font-style: italic;
+}
+.manifesto-divider {
+  border: none;
+  border-top: 1px solid rgba(240,237,232,0.12);
+  margin: 48px 0;
+}
+.manifesto-stand {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(11px, 1.2vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 40px;
+}
+.manifesto-principle {
+  margin-bottom: 40px;
+}
+.manifesto-principle-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #f0ede8;
+  margin-bottom: 8px;
+}
+.manifesto-principle-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: rgba(240,237,232,0.7);
+  line-height: 1.75;
+}
+.manifesto-how-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(11px, 1.2vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+.manifesto-how-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: rgba(240,237,232,0.7);
+  line-height: 1.85;
+  margin-bottom: 8px;
+}
+.manifesto-promise-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(11px, 1.2vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+.manifesto-promise-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: rgba(240,237,232,0.7);
+  line-height: 1.85;
+  margin-bottom: 8px;
+}
+.manifesto-close {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: #f0ede8;
+  line-height: 1.5;
+  margin-top: 48px;
+  font-style: italic;
+}
+.manifesto-close-attr {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: rgba(240,237,232,0.4);
+  margin-top: 12px;
+  letter-spacing: 0.06em;
+}
+
 /* ─── FOOTER ─────────────────────────────────────────── */
 footer {
   background: var(--ink);
@@ -1225,7 +1330,6 @@ footer {
     <div class="services-grid">
 
       <div class="service-card reveal">
-        <div class="service-number">01</div>
         <div class="service-title">Fractional CIO</div>
         <p class="service-desc">
           Senior technology leadership without the full-time overhead. I serve as your organization's CIO — attending board meetings, leading your IT strategy, managing vendors and teams — on a part-time, fixed-fee basis.
@@ -1239,7 +1343,6 @@ footer {
       </div>
 
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-number">02</div>
         <div class="service-title">AI Governance Architecture</div>
         <p class="service-desc">
           Most organizations have an AI enthusiasm problem, not an AI adoption problem. I design the governance frameworks, oversight models, and agentic roadmaps that let you move from pilots to operational programs — with board-level visibility and risk clarity.
@@ -1253,7 +1356,6 @@ footer {
       </div>
 
       <div class="service-card reveal reveal-delay-2">
-        <div class="service-number">03</div>
         <div class="service-title">Fractional CISO & Cyber Advisory</div>
         <p class="service-desc">
           Cybersecurity and enterprise risk integrated into unified roadmaps that boards can understand and govern with confidence. Drawing on direct experience as Acting CISO and liaison to CISA, FBI, and TSA.
@@ -1267,7 +1369,6 @@ footer {
       </div>
 
       <div class="service-card reveal reveal-delay-3">
-        <div class="service-number">04</div>
         <div class="service-title">Shadow AI Audit & Mitigation</div>
         <p class="service-desc">
           The average mid-market enterprise runs 67+ unsanctioned AI tools — touching sensitive data, creating compliance exposure, and operating outside any governance framework. We inventory every AI tool in use, classify the risk, and build the policy structure to bring shadow AI under control before it becomes a liability.
@@ -1381,6 +1482,63 @@ footer {
         <p class="matrix-example">E.g. Board communications, contract execution, security decisions</p>
       </div>
     </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- MANIFESTO                                         -->
+<!-- ══════════════════════════════════════════════════ -->
+<section id="manifesto">
+  <div class="manifesto-inner">
+
+    <p class="section-eyebrow reveal">Why We Exist</p>
+
+    <p class="manifesto-intro reveal reveal-delay-1">Modern organizations are overwhelmed by technology choices, AI hype, and perpetual transformation without clarity.</p>
+    <p class="manifesto-sub reveal reveal-delay-2">We exist to restore calm, confidence, and control to technology decision-making.<br>Technology should amplify judgment — not replace it.</p>
+
+    <hr class="manifesto-divider">
+
+    <p class="manifesto-stand reveal">What We Stand For</p>
+
+    <div class="manifesto-principle reveal">
+      <div class="manifesto-principle-title">Business First. Always.</div>
+      <div class="manifesto-principle-body">Technology is never the goal. Business outcomes are. Every recommendation must clearly advance strategy, economics, risk posture, or operating effectiveness. If it doesn't move the business, it doesn't belong.</div>
+    </div>
+
+    <div class="manifesto-principle reveal">
+      <div class="manifesto-principle-title">Judgment Over Hype</div>
+      <div class="manifesto-principle-body">We reject trends without substance and tools without context. AI, cloud platforms, vendors, and frameworks are means — not answers. We evaluate them critically, explain tradeoffs plainly, and recommend only what we would authorize as a CIO ourselves.</div>
+    </div>
+
+    <div class="manifesto-principle reveal">
+      <div class="manifesto-principle-title">Responsible, Explainable AI</div>
+      <div class="manifesto-principle-body">AI is powerful — and therefore must be governed. We commit to transparency over black boxes, human accountability over automation theater, and privacy and security by design. AI must earn trust before it scales.</div>
+    </div>
+
+    <div class="manifesto-principle reveal">
+      <div class="manifesto-principle-title">Full Accountability — Regardless of Payroll</div>
+      <div class="manifesto-principle-body">Leadership is defined by responsibility, not employment status. Whether fractional or embedded, we operate as true executive partners and owners of outcomes. We do not advise from a distance. We stand behind decisions.</div>
+    </div>
+
+    <div class="manifesto-principle reveal">
+      <div class="manifesto-principle-title">Partnership, Not Dependency</div>
+      <div class="manifesto-principle-body">Our success is measured by client strength — not client reliance. We transfer understanding deliberately — not as a courtesy, but as a commitment. Clients who cannot operate independently of their advisors have simply traded one dependency for another — and that is not progress. We measure success by what remains after we leave.</div>
+    </div>
+
+    <hr class="manifesto-divider">
+
+    <p class="manifesto-how-title reveal">How We Work</p>
+    <p class="manifesto-how-body reveal reveal-delay-1">We ask better questions before proposing solutions. We balance architecture with people and process. We act with integrity even when it costs opportunity. We say no when yes would create future harm.</p>
+    <p class="manifesto-how-body reveal reveal-delay-2">We are advisors first, operators when needed, and vendors never.</p>
+
+    <hr class="manifesto-divider">
+
+    <p class="manifesto-promise-title reveal">Our Promise</p>
+    <p class="manifesto-promise-body reveal reveal-delay-1">Sober thinking in a noisy market. Clarity where others sell complexity. Leadership without ego. Innovation without recklessness.</p>
+
+    <p class="manifesto-close reveal reveal-delay-2">"Technology will continue to change. Sound judgment must endure.<br>That is our work."</p>
+    <p class="manifesto-close-attr reveal reveal-delay-3">— NeuralVance LLC</p>
 
   </div>
 </section>
@@ -1592,7 +1750,7 @@ footer {
     <div style="text-align:right;">
       <p class="footer-copy">© 2026 NeuralVance LLC</p>
       <p class="footer-copy" style="margin-top:4px;">Minnesota-Based. Nationally Engaged.</p>
-      <p style="font-size:9px;color:rgba(255,255,255,0.15);margin-top:8px;letter-spacing:1px;">v10</p>
+      <p style="font-size:9px;color:rgba(255,255,255,0.15);margin-top:8px;letter-spacing:1px;">v11</p>
     </div>
   </div>
 </footer>
